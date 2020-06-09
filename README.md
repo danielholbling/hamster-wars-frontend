@@ -1,2 +1,2 @@
-# hamster-wars-frontend
-A frontend for the hamster wars backend
+# Hamster Wars (frontend)
+Continuation on the API assignment from earlier this spring
