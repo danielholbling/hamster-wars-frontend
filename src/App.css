@@ -6,6 +6,14 @@
   --color-4: #B8BEDD;
 }
 
+h1, h2, h3 {
+  font-family: 'Architects Daughter', cursive;
+}
+
+.App {
+  height: 100%;
+}
+
 .App > main {
   background-color: var(--main-bg-color);
 }
@@ -15,13 +23,100 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-end;
+  font-size: 1em;
   color: white;
 }
 
 .App-header > nav > a {
-  margin: 1em;
+  margin: 0.5em;
   text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  font-weight: 1000;
+  border: 1px solid transparent;
+}
+.App-header > nav > a:hover {
+  border: 1px solid var(--main-bg-color);
+  background-color: var(--color-4);
+  border-bottom: none;
+}
+
+.App-header > nav > a.active {
+  background-color: var(--main-bg-color);
+}
+
+.hamster-pic {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 2px dotted white;
+}
+
+.stats-component > h2 {
+  text-align: center;
+  margin: 0;
+}
+
+.top-list {
+  list-style: none;
+  counter-reset: item;
+  padding: 0 1em;
+  margin:0;
+}
+
+.top-list > li {
+  counter-increment: item;
+  background-color: var(--color-3);
+  border: 1px solid var(--color-4);
+  border-radius: 0.3em;
+  margin: 0.5em;
+  padding: 0.4em;
+  width: 15em;
+}
+
+.hamster-stat-header > div > h3:before {
+  content: "#" counter(item) " - ";
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.hamster-stat-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.hamster-stat-header > div {
+  margin: 0 0 0 1em;
+}
+
+.hamster-stat-header > div > h3 {
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.hamster-stat-body > p {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.battle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.battle-pics {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.battle-pics > img {
+  width: 10em;
+  height: 10em;
+  border: 5px solid var(--color-4);
+  border-radius: 3%;
   cursor: pointer;
 }
