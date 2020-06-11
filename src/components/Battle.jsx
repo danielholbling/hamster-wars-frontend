@@ -10,6 +10,8 @@ const Battle = () => {
     const [newBattleTrigger, setNewBattleTrigger] = useState(0);
 
     const loadNewHamsters = () => {
+        setLeftHamster(null);
+        setRightHamster(null);
         const headers = new Headers();
         headers.append("Authorization", "q7RY4dfQ59pzY8zA");
 
@@ -63,16 +65,21 @@ const Battle = () => {
         <section className="battle-container">
             
             {
-                !battleFought 
-                ?   <>
-                        { leftHamster && rightHamster ? <h1>{leftHamster.name} vs {rightHamster.name}</h1> : null }
-                        <div className="battle-pics">
-                            {leftHamster ? <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} /> : null}
-                            {rightHamster ? <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} /> : null}
+                !battleFought && leftHamster && rightHamster
+                ?   
+                    <div className="battle-pics">
+                        <div className="left-hamster">
+                            <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} />
+                            <h1>{leftHamster.name}</h1>
                         </div>
                         <h3>Click on the cutest hamster!</h3>
-                    </>
-                : null
+                        <div className="right-hamster">
+                            <h1>{rightHamster.name}</h1>
+                            <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
+                        </div>
+                    </div>
+                : 
+                    null
             }
             
             {winner ? <HamsterProfile id={winner.id} winner={true} /> : null}

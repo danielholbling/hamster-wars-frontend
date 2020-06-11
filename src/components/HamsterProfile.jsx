@@ -19,15 +19,18 @@ const HamsterCard = styled.div`
 
 const growAndShrink = keyframes`
     0% {
-        font-size: 2em
+        font-size: 2em;
+        text-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
     }
 
     50% {
-        font-size: 3em
+        font-size: 3em;
+        text-shadow: 0px 0px 15px rgba(0,0,0, 0.5);
     }
 
     100% {
-        font-size: 2em
+        font-size: 2em;
+        text-shadow: 0px 0px 4px rgba(0,0,0, 0.5);
     }
 `
 
@@ -37,8 +40,7 @@ const WinnerTag = styled.h1`
     top: -0.5em;
     left: -1em;
     font-size: 3em;
-    color: var(--color-2);
-    text-shadow: 0px 0px 7px rgba(255,255,255, 1);
+    color: var(--color-4);
     animation: ${growAndShrink} 2s ease-in-out infinite;
 `
 

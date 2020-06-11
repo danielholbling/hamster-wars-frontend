@@ -150,13 +150,46 @@ box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+  flex-direction: column;
 }
 
-.battle-pics > img {
+.battle-pics > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.battle-pics > div > img {
   width: 10em;
   height: 10em;
   border: 5px solid var(--color-4);
   border-radius: 3%;
   cursor: pointer;
   object-fit: cover;
+}
+
+.form-group {
+  display: block;
+  margin-bottom: 2em;
+}
+.form-group label{
+  display: block;
+}
+.form-group input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form-group > input.valid {
+  border: 1px solid #5bbE36;
+}
+
+.form-group > input.invalid {
+
+}
+
+.form-error {
+  position: absolute;
+  color: #DD2626;
 }

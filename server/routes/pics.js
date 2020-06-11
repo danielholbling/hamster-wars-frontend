@@ -44,13 +44,19 @@ router.post('/', async (req,res) => {
     // set incoming file to pic
     let pic = req.files.pic;
 
+    console.log(req.body.hamsterId);
+
     // Move the file to 
     pic.mv('./uploads/' + pic.name);
 
-    console.log(`File upload: \nFilename: ${pic.name}\nMimetype: ${pic.mimetype}\nSize: ${pic.size}`);
+    console.log(`File upload: \n
+    Original filename: ${pic.name}\n
+    Generated filename from id: hamster-${req.body.hamsterId}.${pic.name.split('.').pop()}\n
+    Mimetype: ${pic.mimetype}\n
+    Size: ${pic.size}`);
 
     // Upload file to cloud storage
-    await storage.bucket().upload(`./uploads/${pic.name}`, {destination: `hamster-pics/${pic.name}`});
+    await storage.bucket().upload(`./uploads/${pic.name}`, {destination: `hamster-pics/hamster-${req.body.hamsterId}.${pic.name.split('.').pop()}`});
 
     // Delete temp file
     fs.unlink(`./uploads/${pic.name}`, (err) => {

@@ -27,13 +27,13 @@ const BeautifulButton = styled.button`
 
 
 
-const StyledButton = ({text, handeClick, bounce}) => {
+const StyledButton = ({text, handleClick, bounce}) => {
 
     return (
         <>
             {bounce 
-            ? <BeautifulButtonAnimated onClick={handeClick}> { text } </BeautifulButtonAnimated>
-            : <BeautifulButton onClick={handeClick}> { text } </BeautifulButton>}
+            ? <BeautifulButtonAnimated onClick={handleClick}> { text } </BeautifulButtonAnimated>
+            : <BeautifulButton onClick={handleClick}> { text } </BeautifulButton>}
         </>
     )
 }

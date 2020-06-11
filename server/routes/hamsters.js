@@ -53,7 +53,7 @@ router.get('/:id', async (req,res) => {
     // Get hamster from firebase
     let hamsters = await db
     .collection('hamsters')
-    .where("id","==",req.params.id*1)
+    .where("id","==",req.params.id)
     .get()
     .catch(err => console.error(err));
 
