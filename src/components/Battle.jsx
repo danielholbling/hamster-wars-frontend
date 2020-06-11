@@ -7,9 +7,9 @@ const Battle = () => {
     const [rightHamster, setRightHamster] = useState(null);
     const [battleFought, setBattleFought] = useState(false);
     const [winner, setWinner] = useState(null);
+    const [newBattleTrigger, setNewBattleTrigger] = useState(0);
 
-    // Uncomment below to test against firestore
-    useEffect(() => {
+    const loadNewHamsters = () => {
         const headers = new Headers();
         headers.append("Authorization", "q7RY4dfQ59pzY8zA");
 
@@ -28,33 +28,11 @@ const Battle = () => {
             .then(res => res.text())
             .then(data => setRightHamster(JSON.parse(data)))
             .catch(error => console.log('error', error));
-    },[])
+    }
 
-    // Testing without firestore to not exceed daily quota
-    // useEffect(() => {
-    //     setLeftHamster({
-    //         "id": 1,
-    //         "name": "Sixten",
-    //         "age": 1,
-    //         "favFood": "ostbollar",
-    //         "loves": "Running that wheeeeeeeeeeeeeeeel!",
-    //         "imgName": "hamster-1.jpg",
-    //         "wins": 0,
-    //         "defeats": 0,
-    //         "games": 0
-    //     })
-    //     setRightHamster({
-    //         "id": 2,
-    //         "name": "Sven",
-    //         "age": 5,
-    //         "favFood": "morot",
-    //         "loves": "Running that wheeeeeeeeeeeeeeeel!",
-    //         "imgName": "hamster-2.jpg",
-    //         "wins": 0,
-    //         "defeats": 0,
-    //         "games": 0
-    //     })
-    // },[])
+    useEffect(() => {
+        loadNewHamsters();
+    },[newBattleTrigger])
 
     const handleLeftWin = () => {
         console.log('handleLeftWin fired')
@@ -75,29 +53,30 @@ const Battle = () => {
     }
 
     const handleReset = () => {
-
+        console.log('handleReset fired')
+        setBattleFought(false);
+        setWinner(null);
+        setNewBattleTrigger(newBattleTrigger + 1);
     }
 
     return (
         <section className="battle-container">
-            { leftHamster && rightHamster
-                ? <h1>{leftHamster.name} vs {rightHamster.name}</h1>
+            
+            {
+                !battleFought 
+                ?   <>
+                        { leftHamster && rightHamster ? <h1>{leftHamster.name} vs {rightHamster.name}</h1> : null }
+                        <div className="battle-pics">
+                            {leftHamster ? <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} /> : null}
+                            {rightHamster ? <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} /> : null}
+                        </div>
+                        <h3>Click on the cutest hamster!</h3>
+                    </>
                 : null
             }
-
-            <div className="battle-pics">
-                {leftHamster
-                ? <img src={"/pics/" + leftHamster.imgName}
-                    alt={leftHamster.name} 
-                    onClick={battleFought ? null : handleLeftWin} />
-                : null}
-                {rightHamster
-                ? <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
-                : null}
-            </div>
-            <h3>Click on the cutest hamster!</h3>
-            {winner ? <HamsterProfile hamster={winner} winner={true} /> : null}
-            <StyledButton text="Play again?" handeClick={handleReset} />
+            
+            {winner ? <HamsterProfile id={winner.id} winner={true} /> : null}
+            {battleFought ? <StyledButton text="Play again?" handeClick={handleReset} bounce={true} /> : null}
         </section>
     )
 }
