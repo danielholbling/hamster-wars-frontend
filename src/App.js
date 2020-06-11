@@ -11,7 +11,11 @@ function App() {
 		<Router>
 			<div className="App">
 				<header className="App-header">
-					<h1>Hamster Wars</h1>
+					<div>
+						<h1>Hamster</h1>
+						<img src="/fathamster.png" alt="logo" />
+						<h1>Wars</h1>
+					</div>
 					<nav>
 						<NavLink to="/" activeClassName="active" exact={true}>Start</NavLink>
 						<NavLink to="/battle/:id1/:id2" activeClassName="active">Battle</NavLink>

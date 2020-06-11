@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import HamsterProfile from './HamsterProfile';
+import StyledButton from './StyledButton';
 
 const Battle = () => {
     const [leftHamster, setLeftHamster] = useState(null);
     const [rightHamster, setRightHamster] = useState(null);
     const [battleFought, setBattleFought] = useState(false);
+    const [winner, setWinner] = useState(null);
 
+    // Uncomment below to test against firestore
     useEffect(() => {
         const headers = new Headers();
         headers.append("Authorization", "q7RY4dfQ59pzY8zA");
@@ -27,12 +30,39 @@ const Battle = () => {
             .catch(error => console.log('error', error));
     },[])
 
+    // Testing without firestore to not exceed daily quota
+    // useEffect(() => {
+    //     setLeftHamster({
+    //         "id": 1,
+    //         "name": "Sixten",
+    //         "age": 1,
+    //         "favFood": "ostbollar",
+    //         "loves": "Running that wheeeeeeeeeeeeeeeel!",
+    //         "imgName": "hamster-1.jpg",
+    //         "wins": 0,
+    //         "defeats": 0,
+    //         "games": 0
+    //     })
+    //     setRightHamster({
+    //         "id": 2,
+    //         "name": "Sven",
+    //         "age": 5,
+    //         "favFood": "morot",
+    //         "loves": "Running that wheeeeeeeeeeeeeeeel!",
+    //         "imgName": "hamster-2.jpg",
+    //         "wins": 0,
+    //         "defeats": 0,
+    //         "games": 0
+    //     })
+    // },[])
+
     const handleLeftWin = () => {
         console.log('handleLeftWin fired')
         updateHamsterStats(true, leftHamster.id);
         updateHamsterStats(false, rightHamster.id);
         saveGameResult(leftHamster,rightHamster,leftHamster);
         setBattleFought(true);
+        setWinner(leftHamster);
     }
 
     const handleRightWin = () => {
@@ -41,6 +71,11 @@ const Battle = () => {
         updateHamsterStats(true, rightHamster.id);
         saveGameResult(leftHamster,rightHamster,rightHamster);
         setBattleFought(true);
+        setWinner(rightHamster);
+    }
+
+    const handleReset = () => {
+
     }
 
     return (
@@ -61,8 +96,8 @@ const Battle = () => {
                 : null}
             </div>
             <h3>Click on the cutest hamster!</h3>
-            <HamsterProfile id="1" />
-
+            {winner ? <HamsterProfile hamster={winner} winner={true} /> : null}
+            <StyledButton text="Play again?" handeClick={handleReset} />
         </section>
     )
 }

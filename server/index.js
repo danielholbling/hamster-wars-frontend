@@ -1,11 +1,19 @@
 // IMPORTS
 const express = require('express');
-require('dotenv').config()
+require('dotenv').config();
 const app = express();
+const rateLimit = require('express-rate-limit');
 
 // Använd en variabel till portnumret
 const port = process.env.PORT || 3001;
 
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+
+//  apply to all requests
+app.use(limiter);
 
 
 // Enable JSON formatting
