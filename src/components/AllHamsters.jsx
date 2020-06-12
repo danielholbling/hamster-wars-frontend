@@ -38,7 +38,6 @@ const AllHamsters = () => {
     const handleProfileClick = () => {
         setShowId(null);
         setRerender(rerender + 1);
-        console.log('AAAAA');
     }
 
     useEffect(() => {
