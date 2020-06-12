@@ -5,6 +5,7 @@ import Start from './components/Start';
 import Battle from './components/Battle';
 import Stats from './components/Stats';
 import Upload from './components/Upload';
+import AllHamsters from './components/AllHamsters';
 
 function App() {
 	return (
@@ -18,7 +19,8 @@ function App() {
 					</div>
 					<nav>
 						<NavLink to="/" activeClassName="active" exact={true}>Start</NavLink>
-						<NavLink to="/battle/:id1/:id2" activeClassName="active">Battle</NavLink>
+						<NavLink to="/battle/" activeClassName="active">Battle</NavLink>
+						<NavLink to="/allhamsters" activeClassName="active">Hamsters</NavLink>
 						<NavLink to="/statistics" activeClassName="active">Stats</NavLink>
 						<NavLink to="/upload" activeClassName="active">Upload</NavLink>
 					</nav>
@@ -26,8 +28,11 @@ function App() {
 				<main>
 					<Switch>
 						<Route path="/upload"><Upload /></Route>
+						<Route path="/allhamsters"><AllHamsters /></Route>
 						<Route path="/statistics"><Stats /></Route>
 						<Route path="/battle/:id1/:id2"><Battle /></Route>
+						<Route path="/battle/"><Battle /></Route>
+
 						<Route path="/"><Start /></Route>
 					</Switch>
 				</main>

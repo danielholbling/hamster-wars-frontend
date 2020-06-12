@@ -11,7 +11,6 @@ h1, h2, h3 {
 }
 
 .App {
-  height: 100%;
   display: flex;
   flex-direction: column;
   max-width: 1024px;
@@ -20,9 +19,7 @@ h1, h2, h3 {
 
 .App > main {
   /* background-color: var(--main-bg-color); */
-  margin: 1em;
-  margin-top: 1em;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .App-header {
@@ -41,12 +38,12 @@ h1, h2, h3 {
 }
 
 .App-header > div {
+  background-color: rgba(255,255,255,0.5);
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 13px;
-  border-top-right-radius: 13px;
+  border-radius: 13px;
   -webkit-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
 -moz-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
 box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
@@ -58,16 +55,17 @@ box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
 }
 
 .App-header > div > img {
-  width: 2em;
+  width: 5em;
   object-fit: scale-down;
 }
 
 .App-header > nav {
+  margin-top: 1em;
   height: 3em;
 }
 
 .App-header > nav > a {
-  margin: 0.9em;
+  margin: 0.2em;
   padding: 0.3em;
   text-decoration: none;
   cursor: pointer;
@@ -76,13 +74,11 @@ box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
   border: 1px solid transparent;
 }
 .App-header > nav > a:hover {
-  border: 1px solid var(--main-bg-color);
   background-color: var(--color-4);
-  border-bottom: none;
 }
 
 .App-header > nav > a.active {
-  background-color: var(--main-bg-color);
+  background-color: rgba(255,255,255,0.5);
 }
 
 .hamster-pic {
@@ -100,14 +96,13 @@ box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
 .top-list {
   list-style: none;
   counter-reset: item;
-  padding: 0 1em;
+  padding: 0;
   margin:0;
 }
 
 .top-list > li {
   counter-increment: item;
-  background-color: var(--color-3);
-  border: 1px solid var(--color-4);
+  background-color: rgba(255,255,255,0.5);
   border-radius: 0.3em;
   margin: 0.5em;
   padding: 0.4em;

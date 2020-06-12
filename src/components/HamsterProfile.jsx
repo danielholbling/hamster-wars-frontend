@@ -44,8 +44,6 @@ const WinnerTag = styled.h1`
     animation: ${growAndShrink} 2s ease-in-out infinite;
 `
 
-
-
 const StatsText = styled.p`
 
 `
@@ -66,11 +64,10 @@ const HamsterProfile = ({id, winner}) => {
         fetch(`/hamsters/${id}`, options)
             .then(response => response.text())
             .then(result => {
-                console.log(JSON.parse(result))
                 setHamster(JSON.parse(result));
             })
             .catch(error => console.log('error', error));
-    },[])
+    },[id])
 
     return (
         <>
@@ -81,7 +78,7 @@ const HamsterProfile = ({id, winner}) => {
                     <h2>{hamster.name}</h2>
                     <StatsText>
                         This cutie has won {hamster.wins} out of {hamster.games} games!<br/>
-                        Outside of fighting for top cutie, hobbies include eating {hamster.favFood} and {hamster.loves.toLowerCase()}
+                        Outside of fighting for top cutie, hobbies include eating {hamster.favFood.toLowerCase()} and {hamster.loves.toLowerCase()}
                     </StatsText>
                 </HamsterCard>
             : <></> }

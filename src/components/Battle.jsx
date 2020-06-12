@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HamsterProfile from './HamsterProfile';
 import StyledButton from './StyledButton';
+import { useParams } from 'react-router-dom';
 
 const Battle = () => {
     const [leftHamster, setLeftHamster] = useState(null);
@@ -9,7 +10,9 @@ const Battle = () => {
     const [winner, setWinner] = useState(null);
     const [newBattleTrigger, setNewBattleTrigger] = useState(0);
 
-    const loadNewHamsters = () => {
+    let {id1,id2} = useParams();
+
+    const loadNewHamsters = (id1,id2) => {
         setLeftHamster(null);
         setRightHamster(null);
         const headers = new Headers();
@@ -21,19 +24,23 @@ const Battle = () => {
             redirect: 'follow'
         };
 
-        fetch("/hamsters/random", requestOptions)
+        fetch(`/hamsters/${id1}`, requestOptions)
             .then(res => res.text())
             .then(data => setLeftHamster(JSON.parse(data)))
             .catch(error => console.log('error', error));
 
-        fetch("/hamsters/random", requestOptions)
+        fetch(`/hamsters/${id2}`, requestOptions)
             .then(res => res.text())
             .then(data => setRightHamster(JSON.parse(data)))
             .catch(error => console.log('error', error));
     }
 
     useEffect(() => {
-        loadNewHamsters();
+        if(id1 && id2){
+            loadNewHamsters(id1,id2);
+        }else{
+            loadNewHamsters('random','random');
+        }
     },[newBattleTrigger])
 
     const handleLeftWin = () => {

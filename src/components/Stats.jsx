@@ -49,7 +49,7 @@ const topListJSX = (title,hamsters) => (
         hamsters 
         ? hamsters.map(h => {
             return (
-                <li key={h.name + h.age + h.favFood} className="hamster-stat-container">
+                <li key={h.id} className="hamster-stat-container">
                     <div className="hamster-stat-header">
                         <img src={"/pics/" + h.imgName} alt={h.name} className="hamster-pic" />
                         <div className="hamster-stat-body">
