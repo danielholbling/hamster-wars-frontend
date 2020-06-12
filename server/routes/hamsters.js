@@ -53,7 +53,7 @@ router.get('/:id', async (req,res) => {
     // Get hamster from firebase
     let hamsters = await db
     .collection('hamsters')
-    .where("id","==",req.params.id)
+    .where("id","==",req.params.id*1)
     .get()
     .catch(err => console.error(err));
 
@@ -117,7 +117,8 @@ router.put('/:id/result', async (req,res) => {
         let hamsters = await db
         .collection('hamsters')
         .where("id","==",req.params.id*1)
-        .get();
+        .get()
+        .catch(err => console.error(err));
 
         // Loop over the array returned from firestore
         hamsters.forEach(doc => {

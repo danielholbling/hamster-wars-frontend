@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone';
-import {v4 as uuidv4} from 'uuid';
 import StyledButton from './StyledButton';
 import HamsterProfile from './HamsterProfile';
 
@@ -9,10 +8,11 @@ const Upload = () => {
     const [age, setAge] = useState('');
     const [favFood, setFavFood] = useState('');
     const [loves, setLoves] = useState('');
+
     const [pic, setPic] = useState(null);
+
     const [newHamsterCreated, setNewHamsterCreated] = useState(false);
     const [createdHamsterId, setCreatedHamsterId] = useState(null);
-
 
     const [nameTouched, setNameTouched] = useState(false);
     const [ageTouched, setAgeTouched] = useState(false);
@@ -38,7 +38,7 @@ const Upload = () => {
     }
 
     const handleSubmit = async () => {
-        let hamId = uuidv4();
+        let hamId = Number("1337" + Math.round(Math.random()*1E8));
         const newHamster = {
             "id": hamId,
             name,
@@ -50,10 +50,12 @@ const Upload = () => {
             "defeats": 0,
             "games": 0
         }
+        await setCreatedHamsterId(newHamster.id);
         await uploadFileToBackend(pic, newHamster.id)
         await createNewHamster(newHamster);
-        await setTimeout(setCreatedHamsterId(newHamster.id),1500);
-        setNewHamsterCreated(true);
+        await setTimeout(() => {
+            setNewHamsterCreated(true);
+        }, 1000); 
     }
     
     
@@ -91,6 +93,7 @@ const Upload = () => {
             {!newHamsterCreated
             ?
             <>
+            <h1>Upload a new hamster</h1>
             <div className="form-group">
                 <label>What is your hamsters name?</label>
                 <input type="text" placeholder="Name" onChange={e => setName(e.target.value)} onBlur={() => {setNameTouched(true)}} className={nameClass} />
@@ -115,13 +118,16 @@ const Upload = () => {
                 <div className="form-error">{lovesError}</div>
             </div>
             
-            <div className="form-group"  {...getRootProps()}>
+            <div className="form-group drag-n-drop"  {...getRootProps()}>
                 <input {...getInputProps()} />
-                {
+                {!pic
+                ? 
                     isDragActive
                     ? <p>Drop the picture here...</p>
-                    : <p>Drag and drop your picture here, or click to select files</p>
-                }
+                    : <p>Drag and drop your picture here, or click to browse for a picture</p>
+                
+                : null}
+                
                 {!!pic 
                     ? <p>Picture received successfully!</p> 
                     : null
@@ -138,18 +144,13 @@ const Upload = () => {
             : null
 
             }
-            { createdHamsterId 
+            { newHamsterCreated 
             ? 
             <>
                 <HamsterProfile id={createdHamsterId} /> 
                 <StyledButton text="Upload another hamster?" handleClick={handleReset} />
             </>
             : null }
-            
-            
-
-            
-
 
         </div>
     )

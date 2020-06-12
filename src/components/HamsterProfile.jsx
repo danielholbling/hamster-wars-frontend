@@ -65,9 +65,12 @@ const HamsterProfile = ({id, winner}) => {
 
         fetch(`/hamsters/${id}`, options)
             .then(response => response.text())
-            .then(result => setHamster(JSON.parse(result)))
+            .then(result => {
+                console.log(JSON.parse(result))
+                setHamster(JSON.parse(result));
+            })
             .catch(error => console.log('error', error));
-    },[id])
+    },[])
 
     return (
         <>
@@ -86,20 +89,6 @@ const HamsterProfile = ({id, winner}) => {
     )
 }
 
-// const getHamsterFromDb = (id) => {
-//     const headers = new Headers();
-//     headers.append("Authorization", "q7RY4dfQ59pzY8zA");
 
-//     const options = {
-//         method: 'GET',
-//         headers: headers,
-//         redirect: 'follow'
-//     };
-
-//     fetch("/hamsters/1", options)
-//         .then(response => response.text())
-//         .then(result => result)
-//         .catch(error => console.log('error', error));
-// }
 
 export default HamsterProfile;

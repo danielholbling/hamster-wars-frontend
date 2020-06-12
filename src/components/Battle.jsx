@@ -72,11 +72,12 @@ const Battle = () => {
                             <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} />
                             <h1>{leftHamster.name}</h1>
                         </div>
-                        <h3>Click on the cutest hamster!</h3>
+                        <h3>VS</h3>
                         <div className="right-hamster">
                             <h1>{rightHamster.name}</h1>
                             <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
                         </div>
+                        <h3>Click on the cutest hamster!</h3>
                     </div>
                 : 
                     null
