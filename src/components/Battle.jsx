@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import HamsterProfile from './HamsterProfile';
 import StyledButton from './StyledButton';
 import { useParams } from 'react-router-dom';
 import MatchResults from './MatchResults';

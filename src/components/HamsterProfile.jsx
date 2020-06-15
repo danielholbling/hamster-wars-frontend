@@ -10,11 +10,14 @@ const HamsterPic = styled.img`
 const HamsterCard = styled.div`
     margin: 2em;
     padding: 2em;
-    background-color: white;
-    border: 1px solid var(--color-4);
+    background-color: rgba(255,255,255,0.5);
     position: relative;
     max-width: 15em;
     max-height: 25em;
+
+    & > h2 {
+        text-align: center;
+    }
 `
 
 const growAndShrink = keyframes`
