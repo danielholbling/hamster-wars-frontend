@@ -40,12 +40,28 @@ app.use('/stats', statsRoute);
 
 
 // AUTH
+// app.use((req,res,next) => {
+//     // Serve public folder
+//     if(req.url === '/'){
+//         next();
+
+//     }else{
+//         // Check API key
+//         if(req.headers['authorization'] === process.env.API_KEY){
+//             console.log('API Key verified.');
+//             next();
+
+//         }else{
+//             // Reject if no match
+//             res.status(401).send({
+//                 msg: 'API Key mismatch.'
+//             })
+//         }
+//     }
+// })
 app.use((req,res,next) => {
     // Serve public folder
-    if(req.url === '/'){
-        next();
-
-    }else{
+    if(req.url === '/charts' || req.url === '/games' || req.url === '/hamsters' || req.url === '/pics' || req.url === '/stats'){
         // Check API key
         if(req.headers['authorization'] === process.env.API_KEY){
             console.log('API Key verified.');
@@ -57,8 +73,13 @@ app.use((req,res,next) => {
                 msg: 'API Key mismatch.'
             })
         }
+
+    }else{
+        next();
     }
 })
+
+
 
 
 
