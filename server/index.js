@@ -3,6 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 
 // Använd en variabel till portnumret
 const port = process.env.PORT || 3001;
@@ -37,28 +38,11 @@ app.use('/hamsters', hamstersRoute);
 app.use('/pics', picsRoute)
 app.use('/stats', statsRoute);
 
+// GLOBAL FRONTEND REDIRECT TO CATCH FRONTEND ROUTES
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname+'/../build/index.html'))
+})
 
-
-// AUTH
-// app.use((req,res,next) => {
-//     // Serve public folder
-//     if(req.url === '/'){
-//         next();
-
-//     }else{
-//         // Check API key
-//         if(req.headers['authorization'] === process.env.API_KEY){
-//             console.log('API Key verified.');
-//             next();
-
-//         }else{
-//             // Reject if no match
-//             res.status(401).send({
-//                 msg: 'API Key mismatch.'
-//             })
-//         }
-//     }
-// })
 app.use((req,res,next) => {
     // Serve public folder
     if(req.url === '/charts' || req.url === '/games' || req.url === '/hamsters' || req.url === '/pics' || req.url === '/stats'){
