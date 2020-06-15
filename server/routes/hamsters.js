@@ -17,7 +17,10 @@ const router = new Router();
 router.get('/random', async (req,res) => {
         // Array to perform random on
         let hamsterArr = [];
-    
+
+        // Array of less battled hamsters
+        let lessBattledHamsters = [];
+
         // Get all hamsters from firebase
         let hamsters = await db
         .collection('hamsters')
@@ -25,9 +28,20 @@ router.get('/random', async (req,res) => {
     
         // Push each hamster into array
         hamsters.forEach(hamster => hamsterArr.push(hamster.data()));
-    
-        // Return a random hamster
-        res.status(200).send(hamsterArr[Math.floor(Math.random()*hamsterArr.length)]);
+
+        hamsterArr.map(hamster => {
+            if(hamster.games < 4){
+                lessBattledHamsters.push(hamster);
+            }
+        })
+        
+        // Return a random hamster with less than 3 games, if there is one
+        if(lessBattledHamsters.length > 1){
+            res.status(200).send(lessBattledHamsters[Math.floor(Math.random()*lessBattledHamsters.length)]);
+        }else{
+            // Return a random hamster
+            res.status(200).send(hamsterArr[Math.floor(Math.random()*hamsterArr.length)]);
+        }
     
 });
 
