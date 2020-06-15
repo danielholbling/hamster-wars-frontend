@@ -95,7 +95,7 @@ const Battle = () => {
             }
             
             {winner ? <MatchResults winner={winner.id} loser={loser.id} /> : null}
-            {battleFought ? <StyledButton text="Play again?" handeClick={handleReset} bounce={true} /> : null}
+            {battleFought ? <StyledButton text="Play again?" handleClick={handleReset} bounce={true} /> : null}
         </section>
     )
 }

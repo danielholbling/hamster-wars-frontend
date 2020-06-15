@@ -13,14 +13,14 @@ const buttonAnim = keyframes`
 
 const BeautifulButtonAnimated = styled.button`
     padding: 1em;
-    background-color: rgba(100,200,100,0.5);
+    background-color: rgba(150,200,100,0.8);
     border: none;
     border-radius: 15%;
     animation: ${buttonAnim} 1.5s ease-in-out infinite;
 `
 const BeautifulButton = styled.button`
     padding: 1em;
-    background-color: rgba(100,200,100,0.5);
+    background-color: rgba(150,200,100,0.8);
     border: none;
     border-radius: 15%;
 `
