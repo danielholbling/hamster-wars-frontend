@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import HamsterProfile from './HamsterProfile';
 import StyledButton from './StyledButton';
 import { useParams } from 'react-router-dom';
+import MatchResults from './MatchResults';
 
 const Battle = () => {
     const [leftHamster, setLeftHamster] = useState(null);
     const [rightHamster, setRightHamster] = useState(null);
     const [battleFought, setBattleFought] = useState(false);
     const [winner, setWinner] = useState(null);
+    const [loser, setLoser] = useState(null);
     const [newBattleTrigger, setNewBattleTrigger] = useState(0);
 
     let {id1,id2} = useParams();
@@ -50,6 +52,7 @@ const Battle = () => {
         saveGameResult(leftHamster,rightHamster,leftHamster);
         setBattleFought(true);
         setWinner(leftHamster);
+        setLoser(rightHamster);
     }
 
     const handleRightWin = () => {
@@ -59,6 +62,7 @@ const Battle = () => {
         saveGameResult(leftHamster,rightHamster,rightHamster);
         setBattleFought(true);
         setWinner(rightHamster);
+        setLoser(leftHamster);
     }
 
     const handleReset = () => {
@@ -90,7 +94,7 @@ const Battle = () => {
                     null
             }
             
-            {winner ? <HamsterProfile id={winner.id} winner={true} /> : null}
+            {winner ? <MatchResults winner={winner.id} loser={loser.id} /> : null}
             {battleFought ? <StyledButton text="Play again?" handeClick={handleReset} bounce={true} /> : null}
         </section>
     )
