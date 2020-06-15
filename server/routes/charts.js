@@ -32,6 +32,25 @@ router.get('/top', async (req, res) => {
     res.send(hamsterArr);
 })
 
+// Top 5 winning hamsters
+router.get('/tophamster', async (req, res) => {
+    // Hamster array to fill with the winners
+    let hamsterArr = [];
+    
+    // Get top 5 winning hamsters in descending order from firestore
+    let hamsters = await db
+    .collection('hamsters')
+    .orderBy('wins', 'desc')
+    .limit(1)
+    .get()
+
+    // Push the FB-obj for each hamster as a JS-obj to hamsterArr
+    hamsters.forEach(hamster => hamsterArr.push(hamster.data()));
+
+    // Respond with hamsterArr
+    res.send(hamsterArr);
+})
+
 // Top 5 losing hamsters
 router.get('/bottom', async (req,res) => {
     // Hamster array to fill with the losers
