@@ -135,48 +135,36 @@ box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
   margin: 0;
 }
 
-.battle-container {
+.battle-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-grow: 1;
   align-items: center;
-  height: 100%;
+  flex-direction: column;
 }
 
-.battle-pics {
+.battle-wrapper > div {
   display: flex;
-  justify-content: space-evenly;
+  padding: 1em;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  flex-direction: column;
+  background-color: rgba(255,255,255,0.5);
+  transition: 0.3s;
 }
 
-.battle-pics > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.battle-wrapper > div:hover {
+  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
 }
 
-.battle-pics > div > img {
-  margin: 1em 0em;
+.battle-wrapper > div > img {
   width: 10em;
   height: 10em;
-  border: 5px solid var(--color-4);
-  border-radius: 3%;
   cursor: pointer;
   object-fit: cover;
 }
 
-.battle-pics > div > h1 {
-  margin: 2em;
-}
-
-.battle-pics .left-hamster {
-  align-self: flex-start;
-  margin-top: 3em;
-}
-
-.battle-pics .right-hamster {
-  align-self: flex-end;
+.battle-wrapper > div > div > h1,h3 {
+  text-align: center;
 }
 
 .form-group {

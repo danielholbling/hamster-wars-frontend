@@ -8,6 +8,8 @@ const HamsterCard = styled.div`
     align-items: center;
     background-color: rgba(255,255,255,0.5);
     width: 100%;
+    margin: 1em 0;
+    cursor:pointer;
     & > img {
         margin-left: 1em;
     }

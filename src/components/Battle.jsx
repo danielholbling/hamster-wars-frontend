@@ -3,6 +3,8 @@ import StyledButton from './StyledButton';
 import { useParams } from 'react-router-dom';
 import MatchResults from './MatchResults';
 
+
+
 const Battle = () => {
     const [leftHamster, setLeftHamster] = useState(null);
     const [rightHamster, setRightHamster] = useState(null);
@@ -72,19 +74,36 @@ const Battle = () => {
     }
 
     return (
-        <section className="battle-container">
+        <section>
             
             {
                 !battleFought && leftHamster && rightHamster
                 ?   
-                    <div className="battle-pics">
+                    <div className="battle-wrapper">
+                        <h1>FIGHT!</h1>
                         <div className="left-hamster">
                             <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} />
-                            <h1>{leftHamster.name}</h1>
+                            <div>
+                                <h1>
+                                    {leftHamster.name}
+                                </h1>
+                                <h3>
+                                    {leftHamster.wins} wins<br/>
+                                    {leftHamster.defeats} losses
+                                </h3>
+                            </div>
                         </div>
                         <h3>VS</h3>
                         <div className="right-hamster">
-                            <h1>{rightHamster.name}</h1>
+                            <div>
+                                <h1>
+                                    {rightHamster.name}
+                                </h1>
+                                <h3>
+                                    {rightHamster.wins} wins<br/>
+                                    {rightHamster.defeats} losses
+                                </h3>
+                            </div>
                             <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
                         </div>
                         <h3>Click on the cutest hamster!</h3>
