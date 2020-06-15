@@ -32,7 +32,7 @@ router.get('/top', async (req, res) => {
     res.send(hamsterArr);
 })
 
-// Top 5 winning hamsters
+// Cutest hamster (1)
 router.get('/tophamster', async (req, res) => {
     // Hamster array to fill with the winners
     let hamsterArr = [];
