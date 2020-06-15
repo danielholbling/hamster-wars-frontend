@@ -42,7 +42,7 @@ const Battle = () => {
         }else{
             loadNewHamsters('random','random');
         }
-    },[newBattleTrigger])
+    },[newBattleTrigger,id1,id2])
 
     const handleLeftWin = () => {
         console.log('handleLeftWin fired')

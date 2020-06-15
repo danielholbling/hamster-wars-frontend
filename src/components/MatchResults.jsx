@@ -70,7 +70,6 @@ const RedCross = styled.img`
 const growAndShrink = keyframes`
     0% {
         transform: scale(1) rotate(-35deg);
-        
         text-shadow: 0px 0px 4px rgba(0,0,0, 0.8);
     }
 
@@ -104,7 +103,7 @@ const MatchResults = ({winner, loser}) => {
 
     useEffect(() => {
         loadNewHamsters(winner,loser);
-    },[])
+    },[winner, loser])
 
     const loadNewHamsters = (winner,loser) => {
         setWinningHamster(null);
