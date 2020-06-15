@@ -2,6 +2,48 @@ import React, { useState, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone';
 import StyledButton from './StyledButton';
 import HamsterProfile from './HamsterProfile';
+import styled from 'styled-components';
+
+const UploadForm = styled.section`
+    margin: 1em;
+    margin-top: 0;
+    & > h1 {
+        margin: 0 0 0.3em 0;
+        text-align: center;
+    }
+`
+
+const FormGroup = styled.div`
+    display: block;
+    margin-bottom: 2em;
+    & label {
+        display: block;
+    }
+    & input {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 2em;
+        padding: 0.5em;
+    }
+    & .valid {
+        border: 1px solid #5bbE36;
+    }
+    & .invalid {
+        border: 1px solid #DD2626
+    }
+`
+
+const FormError = styled.div`
+    position: absolute;
+    color: #DD2626;
+`
+
+const DragAndDrop = styled(FormGroup)`
+    background-color: rgba(255,255,255,0.5);
+    padding: 1em;
+`
+
 
 const Upload = () => {
     const [name, setName] = useState('');
@@ -89,42 +131,42 @@ const Upload = () => {
 
 
     return (
-        <div>
+        <UploadForm>
             {!newHamsterCreated
             ?
             <>
             <h1>Upload a new hamster</h1>
-            <div className="form-group">
+            <FormGroup>
                 <label>What is your hamsters name?</label>
                 <input type="text" placeholder="Name" onChange={e => setName(e.target.value)} onBlur={() => {setNameTouched(true)}} className={nameClass} />
-                <div className="form-error">{nameError}</div>
-            </div>
+                <FormError>{nameError}</FormError>
+            </FormGroup>
 
-            <div className="form-group">
+            <FormGroup>
                 <label>How old is your hamster?</label>
                 <input type="text" placeholder="Age" onChange={e => setAge(e.target.value)} onBlur={() => {setAgeTouched(true)}} className={ageClass} />
-                <div className="form-error">{ageError}</div>
-            </div>
+                <FormError>{ageError}</FormError>
+            </FormGroup>
 
-            <div className="form-group">
+            <FormGroup>
                 <label>What is your hamsters favourite food?</label>
                 <input type="text" placeholder="Favourite food" onChange={e => setFavFood(e.target.value)} onBlur={() => {setFavFoodTouched(true)}} className={favFoodClass} />
-                <div className="form-error">{favFoodError}</div>
-            </div>
+                <FormError>{favFoodError}</FormError>
+            </FormGroup>
 
-            <div className="form-group">
+            <FormGroup>
                 <label>What does your hamster love?</label>
                 <input type="text" placeholder="Loves" onChange={e => setLoves(e.target.value)} onBlur={() => {setLovesTouched(true)}} className={lovesClass} />
-                <div className="form-error">{lovesError}</div>
-            </div>
+                <FormError>{lovesError}</FormError>
+            </FormGroup>
             
-            <div className="form-group drag-n-drop"  {...getRootProps()}>
+            <DragAndDrop  {...getRootProps()}>
                 <input {...getInputProps()} />
                 {!pic
                 ? 
                     isDragActive
                     ? <p>Drop the picture here...</p>
-                    : <p>Drag and drop your picture here, or click to browse for a picture</p>
+                    : <p>Drag and drop your picture here, or <strong>click</strong> to browse for a picture</p>
                 
                 : null}
                 
@@ -132,13 +174,13 @@ const Upload = () => {
                     ? <p>Picture received successfully!</p> 
                     : null
                 }
-            </div>
+            </DragAndDrop>
             
-            <div className="form-group">
+            <FormGroup>
                 {formIsValid
                 ? <StyledButton text="Click here to submit your hamster!" handleClick={handleSubmit} bounce={true} />
                 : null}
-            </div>
+            </FormGroup>
             </>
 
             : null
@@ -152,7 +194,7 @@ const Upload = () => {
             </>
             : null }
 
-        </div>
+        </UploadForm>
     )
 }
 

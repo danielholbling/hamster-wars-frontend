@@ -27,7 +27,7 @@ const growAndShrink = keyframes`
     }
 
     50% {
-        font-size: 3em;
+        font-size: 2.5em;
         text-shadow: 0px 0px 15px rgba(0,0,0, 0.5);
     }
 
@@ -40,10 +40,10 @@ const growAndShrink = keyframes`
 const WinnerTag = styled.h1`
     position: absolute;
     transform: rotateZ(-45deg);
-    top: -0.5em;
+    top: 1em;
     left: -1em;
     font-size: 3em;
-    color: var(--color-4);
+    color: lightgoldenrodyellow;
     animation: ${growAndShrink} 2s ease-in-out infinite;
 `
 
@@ -52,7 +52,7 @@ const StatsText = styled.p`
 `
 
 
-const HamsterProfile = ({id, winner}) => {
+const HamsterProfile = ({id, winner, jumpingText}) => {
     const [hamster, setHamster] = useState(null);
     useEffect(() => {
         const headers = new Headers();
@@ -77,6 +77,7 @@ const HamsterProfile = ({id, winner}) => {
             {hamster 
             ?   <HamsterCard>
                     {winner ? <WinnerTag>WINNER!</WinnerTag> : null}
+                    {jumpingText ? <WinnerTag>{jumpingText}</WinnerTag> : null}
                     <HamsterPic src={"/pics/" + hamster.imgName} alt={hamster.name} />
                     <h2>{hamster.name}</h2>
                     <StatsText>

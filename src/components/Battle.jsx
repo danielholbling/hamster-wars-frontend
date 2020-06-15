@@ -2,6 +2,37 @@ import React, { useEffect, useState } from 'react';
 import StyledButton from './StyledButton';
 import { useParams } from 'react-router-dom';
 import MatchResults from './MatchResults';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    & > div {
+        display: flex;
+        padding: 1em;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: rgba(255,255,255,0.5);
+        transition: 0.3s;
+        &:hover {
+            box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+        }
+        & > img {
+            width: 10em;
+            height: 10em;
+            cursor: pointer;
+            object-fit: cover;
+        }
+        & > div > div {
+            & h1,h3 {
+                text-align: center;
+                max-width: 4.5em;
+            }
+        }
+    }
+`
 
 const Battle = () => {
     const [leftHamster, setLeftHamster] = useState(null);
@@ -81,9 +112,9 @@ const Battle = () => {
             {
                 !battleFought && leftHamster && rightHamster
                 ?   
-                    <div className="battle-wrapper">
+                    <Wrapper>
                         <h1>FIGHT!</h1>
-                        <div className="left-hamster">
+                        <div>
                             <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} />
                             <div>
                                 <h1>
@@ -96,7 +127,7 @@ const Battle = () => {
                             </div>
                         </div>
                         <h3>VS</h3>
-                        <div className="right-hamster">
+                        <div>
                             <div>
                                 <h1>
                                     {rightHamster.name}
@@ -109,13 +140,15 @@ const Battle = () => {
                             <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
                         </div>
                         <h3>Click on the cutest hamster!</h3>
-                    </div>
+                    </Wrapper>
                 : 
                     null
             }
             
             {winner ? <MatchResults winner={winner.id} loser={loser.id} /> : null}
-            {battleFought ? <StyledButton text="Play again?" handleClick={handleReset} bounce={true} /> : null}
+            <div className="centerer">
+                {battleFought ? <StyledButton text="Play again?" handleClick={handleReset} bounce={true} /> : null}
+            </div>
         </section>
     )
 }

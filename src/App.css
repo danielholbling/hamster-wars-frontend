@@ -14,11 +14,9 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   max-width: 1024px;
-  align-items: center;
 }
 
 .App > main {
-  /* background-color: var(--main-bg-color); */
   min-height: 100vh;
 }
 
@@ -45,8 +43,8 @@ h1, h2, h3 {
   justify-content: center;
   border-radius: 13px;
   -webkit-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
--moz-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
+  -moz-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
+  box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
 }
 
 .App-header > div > h1 {
@@ -81,119 +79,7 @@ box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
   background-color: rgba(255,255,255,0.5);
 }
 
-.hamster-pic {
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  border: 2px dotted white;
-}
-
-.stats-component > h2 {
-  text-align: center;
-  margin: 0;
-}
-
-.top-list {
-  list-style: none;
-  counter-reset: item;
-  padding: 0;
-  margin:0;
-}
-
-.top-list > li {
-  counter-increment: item;
-  background-color: rgba(255,255,255,0.5);
-  border-radius: 0.3em;
-  margin: 0.5em;
-  padding: 0.4em;
-  width: 15em;
-}
-
-.hamster-stat-header > div > h3:before {
-  content: "#" counter(item) " - ";
-  font-weight: bolder;
-  font-size: 1.2em;
-}
-
-.hamster-stat-header {
+.centerer {
   display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-.hamster-stat-header > div {
-  margin: 0 0 0 1em;
-}
-
-.hamster-stat-header > div > h3 {
-  margin: 0;
-  font-size: 0.8em;
-}
-
-.hamster-stat-body > p {
-  font-size: 0.8em;
-  margin: 0;
-}
-
-.battle-wrapper {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  flex-direction: column;
-}
-
-.battle-wrapper > div {
-  display: flex;
-  padding: 1em;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background-color: rgba(255,255,255,0.5);
-  transition: 0.3s;
-}
-
-.battle-wrapper > div:hover {
-  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-}
-
-.battle-wrapper > div > img {
-  width: 10em;
-  height: 10em;
-  cursor: pointer;
-  object-fit: cover;
-}
-
-.battle-wrapper > div > div > h1,h3 {
-  text-align: center;
-}
-
-.form-group {
-  display: block;
-  margin-bottom: 2em;
-}
-.form-group label{
-  display: block;
-}
-.form-group input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.form-group > input.valid {
-  border: 1px solid #5bbE36;
-}
-
-.form-group > input.invalid {
-  border: 1px solid #DD2626
-}
-
-.drag-n-drop {
-  background-color: rgba(255,255,255,0.5);
-  padding: 2em;
-}
-
-.form-error {
-  position: absolute;
-  color: #DD2626;
+  justify-content: center;
 }
