@@ -3,8 +3,6 @@ import StyledButton from './StyledButton';
 import { useParams } from 'react-router-dom';
 import MatchResults from './MatchResults';
 
-
-
 const Battle = () => {
     const [leftHamster, setLeftHamster] = useState(null);
     const [rightHamster, setRightHamster] = useState(null);
@@ -44,6 +42,7 @@ const Battle = () => {
         }else{
             loadNewHamsters('random','random');
         }
+
     },[newBattleTrigger,id1,id2])
 
     const handleLeftWin = () => {
@@ -71,6 +70,9 @@ const Battle = () => {
         setBattleFought(false);
         setWinner(null);
         setNewBattleTrigger(newBattleTrigger + 1);
+    }
+    if(leftHamster && rightHamster && leftHamster === rightHamster){
+        loadNewHamsters(leftHamster.id,'random')
     }
 
     return (
