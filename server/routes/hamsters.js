@@ -33,6 +33,7 @@ router.get('/random', async (req,res) => {
             if(hamster.games < 4){
                 lessBattledHamsters.push(hamster);
             }
+            return null;
         })
         
         // Return a random hamster with less than 3 games, if there is one
