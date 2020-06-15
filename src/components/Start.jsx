@@ -7,6 +7,9 @@ const Wrapper = styled.div`
     flex-direction: column;
     margin: 1em;
     align-items: center;
+    @media (min-width: 992px) {
+        flex-direction: row-reverse;
+    }
     & p {
         text-align: center;
         margin: 0.5em;
@@ -36,8 +39,11 @@ const Start = () => {
 
     return (
         <Wrapper>
+            <div>
+
             <p>Here you can put hamsters against eachother in deadly (not really) battle.</p>
             <p>Choose <strong>Battle</strong> in the navbar to begin!</p>
+            </div>
             {cutest
             ? 
                 <HamsterProfile id={cutest[0].id} jumpingText="Top hamster!" />

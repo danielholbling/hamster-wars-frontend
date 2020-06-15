@@ -5,30 +5,61 @@ import MatchResults from './MatchResults';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    & > div {
+    @media (max-width: 991px){
         display: flex;
-        padding: 1em;
-        justify-content: space-between;
         align-items: center;
-        width: 100%;
-        background-color: rgba(255,255,255,0.5);
-        transition: 0.3s;
-        &:hover {
-            box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+        flex-direction: column;
+        & > div {
+            display: flex;
+            padding: 1em;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: rgba(255,255,255,0.5);
+            transition: 0.3s;
+            &:hover {
+                box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+            }
+            & > img {
+                width: 10em;
+                height: 10em;
+                cursor: pointer;
+                object-fit: cover;
+            }
+            & > div > div {
+                & h1,h3 {
+                    text-align: center;
+                    max-width: 4.5em;
+                }
+            }
         }
-        & > img {
-            width: 10em;
-            height: 10em;
-            cursor: pointer;
-            object-fit: cover;
-        }
-        & > div > div {
-            & h1,h3 {
-                text-align: center;
-                max-width: 4.5em;
+    }
+    @media (min-width: 992px){
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        height: 75vh;
+        & > div {
+            display: flex;
+            padding: 1em;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255,255,255,0.5);
+            transition: 0.3s;
+            &:hover {
+                box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+            }
+            & > img {
+                width: 16em;
+                height: 16em;
+                cursor: pointer;
+                object-fit: cover;
+            }
+            & > div > div {
+                & h1,h3 {
+                    text-align: center;
+                    max-width: 4.5em;
+                }
             }
         }
     }

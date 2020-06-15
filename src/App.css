@@ -10,76 +10,145 @@ h1, h2, h3 {
   font-family: 'Architects Daughter', cursive;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  max-width: 1024px;
-}
-
-.App > main {
-  min-height: 100vh;
-}
-
-.App-header {
-  margin: 1em;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 1em;
-  color: var(--color-1);
-  max-width: 18em;
-  min-width: 20em;
-  border-radius: 15px;
+@media (max-width:991px){
+  .App {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    align-items: center;
+  }
   
+  .App > main {
+    min-height: 100vh;
+  }
+  
+  .App-header {
+    margin: 1em;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1em;
+    color: var(--color-1);
+    
+    border-radius: 15px;
+    
+  }
+  
+  .App-header > div {
+    background-color: rgba(255,255,255,0.5);
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    -webkit-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
+    box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
+  }
+  
+  .App-header > div > h1 {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App-header > div > img {
+    width: 5em;
+    object-fit: scale-down;
+  }
+  
+  .App-header > nav {
+    margin-top: 1em;
+    height: 3em;
+  }
+  
+  .App-header > nav > a {
+    margin: 0.2em;
+    padding: 0.3em;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 1000;
+    border: 1px solid transparent;
+  }
+  .App-header > nav > a:hover {
+    background-color: var(--color-4);
+  }
+  
+  .App-header > nav > a.active {
+    background-color: rgba(255,255,255,0.5);
+  }
+  
+  .centerer {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-.App-header > div {
-  background-color: rgba(255,255,255,0.5);
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  border-radius: 13px;
-  -webkit-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
-  -moz-box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
-  box-shadow: 0px 0px 57px 1px rgba(255,255,255,1);
-}
+@media (min-width: 992px){
+  .App {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    min-width: 992px;
+    
+  }
+  
+  .App > main {
+    min-height: 100vh;
+  }
+  
+  .App-header {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1em;
+    color: var(--color-1);
+    border-radius: 15px;
+  }
+  
+  .App-header > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.App-header > div > h1 {
-  margin: 0;
-  padding: 0;
-}
-
-.App-header > div > img {
-  width: 5em;
-  object-fit: scale-down;
-}
-
-.App-header > nav {
-  margin-top: 1em;
-  height: 3em;
-}
-
-.App-header > nav > a {
-  margin: 0.2em;
-  padding: 0.3em;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: 1000;
-  border: 1px solid transparent;
-}
-.App-header > nav > a:hover {
-  background-color: var(--color-4);
-}
-
-.App-header > nav > a.active {
-  background-color: rgba(255,255,255,0.5);
-}
-
-.centerer {
-  display: flex;
-  justify-content: center;
+  .App-header > div :nth-child(1){order:2;margin-right: 0.3em;}
+  .App-header > div :nth-child(2){order:1;}
+  .App-header > div :nth-child(3){order:3;}
+  
+  .App-header > div > h1 {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App-header > div > img {
+    width: 5em;
+    object-fit: scale-down;
+  }
+  
+  .App-header > nav {
+    margin-top: 1em;
+    height: 3em;
+  }
+  
+  .App-header > nav > a {
+    margin: 0.2em;
+    padding: 0.3em;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 1000;
+    border: 1px solid transparent;
+  }
+  .App-header > nav > a:hover {
+    background-color: var(--color-4);
+  }
+  
+  .App-header > nav > a.active {
+    background-color: rgba(255,255,255,0.5);
+  }
 }
