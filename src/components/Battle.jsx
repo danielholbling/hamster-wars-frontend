@@ -85,7 +85,8 @@ const Wrapper = styled.div`
                 & h1,h3 {
                     max-width: 4.5em;
                     text-align: center;
-                    font-size: 2em;
+                    font-size: 3em;
+                    margin: 0;
                 }
             }
         }

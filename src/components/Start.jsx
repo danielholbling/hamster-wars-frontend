@@ -7,13 +7,25 @@ const Wrapper = styled.div`
     flex-direction: column;
     margin: 1em;
     align-items: center;
-    @media (min-width: 992px) {
-        flex-direction: row-reverse;
-    }
-    & p {
+    & > article > p {
         text-align: center;
         margin: 0.5em;
         margin-top: 0;
+    }
+    @media (min-width: 992px) {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        & > article {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        & > article > p {
+            width: 20em;
+            font-size: 2em;
+
+        }
     }
 `
 
@@ -39,11 +51,10 @@ const Start = () => {
 
     return (
         <Wrapper>
-            <div>
-
-            <p>Here you can put hamsters against eachother in deadly (not really) battle.</p>
-            <p>Choose <strong>Battle</strong> in the navbar to begin!</p>
-            </div>
+            <article>
+                <p>Here you can put hamsters against eachother in deadly (not really) battle.</p>
+                <p>Choose <strong>Battle</strong> in the navbar to begin!</p>
+            </article>
             {cutest
             ? 
                 <HamsterProfile id={cutest[0].id} jumpingText="Top hamster!" />

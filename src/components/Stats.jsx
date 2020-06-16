@@ -16,7 +16,7 @@ const Wrapper = styled.section`
         align-items: center;
         & > h2 {
             text-align: center;
-            margin: 1em;
+            margin: 0.5em;
             font-size: 2.5em;
         }
         & > article {

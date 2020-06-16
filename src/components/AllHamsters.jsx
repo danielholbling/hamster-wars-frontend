@@ -2,6 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import HamsterProfile from './HamsterProfile';
 
+const Wrapper = styled.section`
+    @media (min-width: 992px){
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        & > div {
+            cursor: pointer;
+        }
+    }
+`
+
 const HamsterCard = styled.div`
     display: flex;
     justify-content:flex-start;
@@ -17,7 +29,17 @@ const HamsterCard = styled.div`
         margin-left: 1em;
         margin-right: 1em;
     }
-`
+    @media (min-width: 992px){
+        width: 17em;
+        margin: 0.5em;
+        & > img {
+            margin: 0.5em;
+        }
+        & > div > h2 {
+            margin: 0.5em;
+        }
+    }
+    `
 
 const HamsterPic = styled.img`
     width: 3em;
@@ -59,7 +81,7 @@ const AllHamsters = () => {
     },[rerender])
 
     return (
-        <section>
+        <Wrapper>
             {
                 hamsterArr
                 ? hamsterArr.sort((a,b) => {
@@ -92,7 +114,7 @@ const AllHamsters = () => {
                     </div>
                 : null
             }
-        </section>
+        </Wrapper>
     )
 }
 

@@ -5,43 +5,82 @@ import HamsterProfile from './HamsterProfile';
 import styled from 'styled-components';
 
 const UploadForm = styled.section`
-    margin: 1em;
-    margin-top: 0;
-    & > h1 {
-        margin: 0 0 0.3em 0;
-        text-align: center;
+    @media (max-width: 991px){
+        margin: 1em;
+        margin-top: 0;
+        & > h1 {
+            margin: 0 0 0.3em 0;
+            text-align: center;
+        }
+    }
+    @media (min-width: 992px){
+        & > h1 {
+            font-size: 3em;
+            margin: 1em;
+            text-align: center;
+        }
     }
 `
 
 const FormGroup = styled.div`
-    display: block;
-    margin-bottom: 2em;
-    & label {
+    @media (max-width: 991px){
         display: block;
+        margin-bottom: 2em;
+        & label {
+            display: block;
+        }
+        & input {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 2em;
+            padding: 0.5em;
+        }
+        & .valid {
+            border: 1px solid #5bbE36;
+        }
+        & .invalid {
+            border: 1px solid #DD2626
+        }
     }
-    & input {
+    @media (min-width: 992px){
         display: block;
-        box-sizing: border-box;
-        width: 100%;
-        height: 2em;
-        padding: 0.5em;
-    }
-    & .valid {
-        border: 1px solid #5bbE36;
-    }
-    & .invalid {
-        border: 1px solid #DD2626
+        margin-bottom: 2em;
+        & label {
+            display: block;
+            font-size: 1.5em;
+        }
+        & input {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            font-size: 1.5em;
+            padding: 0.5em;
+        }
+        & .valid {
+            border: 2px solid #5bbE36;
+        }
+        & .invalid {
+            border: 2px solid #DD2626
+        }
     }
 `
 
 const FormError = styled.div`
     position: absolute;
     color: #DD2626;
+    @media (min-width: 992px){
+        font-size: 1.25em;
+    }
 `
 
 const DragAndDrop = styled(FormGroup)`
     background-color: rgba(255,255,255,0.5);
     padding: 1em;
+    cursor:pointer;
+    & > p {
+        text-align: center;
+    }
 `
 
 
