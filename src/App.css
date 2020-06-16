@@ -154,4 +154,8 @@ h1, h2, h3 {
   .App-header > nav > a.active {
     background-color: rgba(255,255,255,0.5);
   }
+  .centerer {
+    display: flex;
+    justify-content: center;
+  }
 }

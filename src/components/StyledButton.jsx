@@ -17,12 +17,18 @@ const BeautifulButtonAnimated = styled.button`
     border: none;
     border-radius: 15%;
     animation: ${buttonAnim} 1.5s ease-in-out infinite;
+    @media (min-width: 992px){
+        font-size: 1.5em;
+    }
 `
 const BeautifulButton = styled.button`
     padding: 1em;
     background-color: rgba(150,200,100,0.8);
     border: none;
     border-radius: 15%;
+    @media (min-width: 992px){
+        font-size: 1.5em;
+    }
 `
 
 
