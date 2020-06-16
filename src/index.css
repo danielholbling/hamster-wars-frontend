@@ -1,12 +1,21 @@
 body {
   display: flex;
+  align-items: center;
   justify-content: center;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(240,166,202);
-background: linear-gradient(0deg, rgba(240,166,202,1) 0%, rgba(240,200,209,1) 100%);
+  background: linear-gradient(0deg, rgba(240,166,202,1) 0%, rgba(240,200,209,1) 100%);
+  background-size: cover;
+}
+
+@media (min-width:992px){
+  body {
+    height: 100vh;
+    align-items: unset;
+  }
 }
 
 code {

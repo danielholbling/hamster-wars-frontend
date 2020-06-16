@@ -26,7 +26,7 @@ const Wrapper = styled.div`
                 cursor: pointer;
                 object-fit: cover;
             }
-            & > div > div {
+            & > div {
                 & h1,h3 {
                     text-align: center;
                     max-width: 4.5em;
@@ -37,28 +37,55 @@ const Wrapper = styled.div`
     @media (min-width: 992px){
         display: flex;
         align-items: center;
-        flex-direction: row;
-        height: 75vh;
+        justify-content: center;
+        flex-direction: column;
+        & > h1 {
+            font-size: 3em;
+            margin-top: 0;
+        }
+        & > h3 {
+            font-size: 2.2em;
+        }
+        & > :nth-child(2){
+            align-self:flex-start;
+            & > img {
+                margin-right: 1em;
+            }
+        }
+        & > :nth-child(4){
+            align-self:flex-end;
+            & > img {
+                margin-left: 1em;
+            }
+        }
         & > div {
+            cursor: pointer;
             display: flex;
             padding: 1em;
             justify-content: space-between;
             align-items: center;
             background-color: rgba(255,255,255,0.5);
             transition: 0.3s;
+            width: 35em;
             &:hover {
-                box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 16px 0px rgba(255,255,255,0.5);
+                box-shadow: 0 0 16 0 rgba(255,255,255,1) inset;
             }
             & > img {
                 width: 16em;
-                height: 16em;
-                cursor: pointer;
+                height: 13em;
                 object-fit: cover;
             }
-            & > div > div {
+            & > div {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
                 & h1,h3 {
-                    text-align: center;
                     max-width: 4.5em;
+                    text-align: center;
+                    font-size: 2em;
                 }
             }
         }
@@ -133,7 +160,7 @@ const Battle = () => {
         setWinner(null);
         setNewBattleTrigger(newBattleTrigger + 1);
     }
-    if(leftHamster && rightHamster && leftHamster === rightHamster){
+    if(leftHamster && rightHamster && leftHamster.id === rightHamster.id){
         loadNewHamsters(leftHamster.id,'random')
     }
 
@@ -145,16 +172,17 @@ const Battle = () => {
                 ?   
                     <Wrapper>
                         <h1>FIGHT!</h1>
+
                         <div>
+                            <></>
                             <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} />
                             <div>
                                 <h1>
                                     {leftHamster.name}
                                 </h1>
-                                <h3>
-                                    {leftHamster.wins} wins<br/>
-                                    {leftHamster.defeats} losses
-                                </h3>
+                                <p>{leftHamster.wins} wins</p>
+                                <p>{leftHamster.defeats} losses</p>
+                                
                             </div>
                         </div>
                         <h3>VS</h3>
@@ -163,10 +191,8 @@ const Battle = () => {
                                 <h1>
                                     {rightHamster.name}
                                 </h1>
-                                <h3>
-                                    {rightHamster.wins} wins<br/>
-                                    {rightHamster.defeats} losses
-                                </h3>
+                                <p>{rightHamster.wins} wins</p>
+                                <p>{rightHamster.defeats} losses</p>
                             </div>
                             <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
                         </div>
