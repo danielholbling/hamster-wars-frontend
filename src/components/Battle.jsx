@@ -174,9 +174,9 @@ const Battle = () => {
                     <Wrapper>
                         <h1>FIGHT!</h1>
 
-                        <div>
+                        <div onClick={battleFought ? null : handleLeftWin}>
                             <></>
-                            <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} onClick={battleFought ? null : handleLeftWin} />
+                            <img src={"/pics/" + leftHamster.imgName} alt={leftHamster.name} />
                             <div>
                                 <h1>
                                     {leftHamster.name}
@@ -187,7 +187,7 @@ const Battle = () => {
                             </div>
                         </div>
                         <h3>VS</h3>
-                        <div>
+                        <div onClick={battleFought ? null : handleRightWin}>
                             <div>
                                 <h1>
                                     {rightHamster.name}
@@ -195,7 +195,7 @@ const Battle = () => {
                                 <p>{rightHamster.wins} wins</p>
                                 <p>{rightHamster.defeats} losses</p>
                             </div>
-                            <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} onClick={battleFought ? null : handleRightWin} />
+                            <img src={"/pics/" + rightHamster.imgName} alt={rightHamster.name} />
                         </div>
                         <h3>Click on the cutest hamster!</h3>
                     </Wrapper>
